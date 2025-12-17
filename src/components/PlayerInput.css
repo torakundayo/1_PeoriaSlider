@@ -1,0 +1,274 @@
+.player-input {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-input h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.2rem;
+  color: #333;
+  border-bottom: 2px solid #1976d2;
+  padding-bottom: 8px;
+}
+
+/* Add player form */
+.add-player-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.player-name-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.player-name-input:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+.btn-add {
+  padding: 10px 20px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-add:hover {
+  background: #1565c0;
+}
+
+/* Player list */
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.player-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.player-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.player-name:hover {
+  background: #e0e0e0;
+}
+
+.player-name-edit {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border: 2px solid #1976d2;
+  border-radius: 4px;
+  outline: none;
+}
+
+.btn-remove {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #ef5350;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.btn-remove:hover {
+  background: #d32f2f;
+}
+
+/* Score grid */
+.score-grid {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.score-section {
+  margin-bottom: 8px;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: max-content;
+}
+
+.score-row.header {
+  margin-bottom: 4px;
+}
+
+.section-label {
+  width: 32px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.hole-number {
+  width: 28px;
+  height: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+  background: #e0e0e0;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hole-number.hidden-hole {
+  background: #fff9c4;
+  color: #f57c00;
+}
+
+.par-value {
+  width: 28px;
+  height: 18px;
+  font-size: 0.7rem;
+  color: #666;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-label {
+  width: 36px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+  margin-left: 4px;
+}
+
+.total-value {
+  width: 36px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-left: 4px;
+}
+
+/* Score inputs */
+.score-input {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+
+.score-input::-webkit-outer-spin-button,
+.score-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.score-input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.score-input.hidden-hole {
+  background: #fff9c4;
+  border-color: #f57c00;
+}
+
+/* Player total */
+.player-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.player-total span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.total-score {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: #1976d2 !important;
+}
+
+/* No players message */
+.no-players {
+  text-align: center;
+  color: #999;
+  padding: 24px;
+  font-size: 0.9rem;
+}
+
+/* Mobile optimizations */
+@media (max-width: 400px) {
+  .score-input,
+  .hole-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
+
+  .section-label {
+    width: 28px;
+    font-size: 0.65rem;
+  }
+
+  .total-label,
+  .total-value {
+    width: 32px;
+    font-size: 0.75rem;
+  }
+}
