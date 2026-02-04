@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "dev.pages.peoria_slider.twa",
+        "sha256_cert_fingerprints": ["39:CE:83:44:79:C4:4F:DE:36:6B:32:89:16:9C:E3:23:23:82:10:0F:38:7A:99:7F:8C:1D:4E:1D:6C:0F:15:D0"]
+      }
+    }]
