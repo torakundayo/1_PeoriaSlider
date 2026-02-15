@@ -36,7 +36,7 @@
 
 .btn-add {
   padding: 10px 20px;
-  background: #1976d2;
+  background: #2e7d32;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -47,7 +47,7 @@
 }
 
 .btn-add:hover {
-  background: #1565c0;
+  background: #1b5e20;
 }
 
 /* Player list */

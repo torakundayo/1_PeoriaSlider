@@ -53,7 +53,8 @@ function isValidConfig(config: unknown): config is CompetitionConfig {
     typeof c.multiplier === 'number' &&
     c.limits &&
     typeof c.limits.doubleParCut === 'boolean' &&
-    typeof c.limits.maxHdcp === 'number'
+    typeof c.limits.maxHdcp === 'number' &&
+    (c.roundingMode === 'round' || c.roundingMode === 'floor' || c.roundingMode === 'ceil')
   );
 }
 

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { SavedCompetition, CompetitionConfig, Player } from '../types';
+import type { SavedCompetition } from '../types';
 import { calculateAllResults } from '../utils/calculation';
 import './HistoryPanel.css';
 
@@ -7,13 +7,6 @@ interface HistoryPanelProps {
   history: SavedCompetition[];
   onLoad: (competition: SavedCompetition) => void;
   onDelete: (id: string) => void;
-}
-
-function getWinnerSummary(config: CompetitionConfig, players: Player[]): string | null {
-  const results = calculateAllResults(players, config);
-  const winner = results.find(r => r.rank === 1);
-  if (!winner) return null;
-  return `${winner.playerName} (Net ${winner.net.toFixed(1)})`;
 }
 
 function formatDate(isoDate: string): string {
@@ -25,14 +18,28 @@ function formatDate(isoDate: string): string {
 }
 
 export function HistoryPanel({ history, onLoad, onDelete }: HistoryPanelProps) {
+  // pre-computed summary を使い、古いデータのみ再計算（後方互換性）
   const summaries = useMemo(() => {
-    return history.map(comp => ({
-      id: comp.id,
-      winner: getWinnerSummary(comp.config, comp.players),
-      playerCount: comp.players.filter(
-        p => p.scores.length === 18 && p.scores.every(s => s > 0)
-      ).length
-    }));
+    return history.map(comp => {
+      if (comp.summary) {
+        const { playerCount, winnerName, winnerNet } = comp.summary;
+        return {
+          id: comp.id,
+          winner: winnerName ? `${winnerName} (Net ${winnerNet?.toFixed(1)})` : null,
+          playerCount,
+        };
+      }
+      // 後方互換: summary がない古いデータ
+      const results = calculateAllResults(comp.players, comp.config);
+      const winner = results.find(r => r.rank === 1);
+      return {
+        id: comp.id,
+        winner: winner ? `${winner.playerName} (Net ${winner.net.toFixed(1)})` : null,
+        playerCount: comp.players.filter(
+          p => p.scores.length === 18 && p.scores.every(s => s > 0)
+        ).length,
+      };
+    });
   }, [history]);
 
   if (history.length === 0) {

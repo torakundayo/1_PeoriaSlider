@@ -57,6 +57,13 @@ export const DEFAULT_CONFIG: CompetitionConfig = {
   roundingMode: 'round'
 };
 
+// 保存済みコンペのサマリー（保存時に計算して保持）
+export interface CompetitionSummary {
+  playerCount: number;
+  winnerName: string | null;
+  winnerNet: number | null;
+}
+
 // 保存済みコンペデータ
 export interface SavedCompetition {
   id: string;
@@ -64,11 +71,5 @@ export interface SavedCompetition {
   date: string;           // ISO date string (保存日時)
   config: CompetitionConfig;
   players: Player[];
-}
-
-// ホール情報の表示用
-export interface HoleInfo {
-  number: number;  // 1-18
-  par: number;
-  isHidden: boolean;
+  summary?: CompetitionSummary;  // optional for backward compatibility
 }

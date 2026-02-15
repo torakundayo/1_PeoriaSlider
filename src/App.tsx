@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import type { CompetitionConfig, Player, CalculationResult, SavedCompetition } from './types';
+import type { CompetitionConfig, Player, CalculationResult, SavedCompetition, CompetitionSummary } from './types';
 import { DEFAULT_CONFIG } from './types';
 import { calculateAllResults } from './utils/calculation';
 import {
@@ -106,12 +106,23 @@ function App() {
   };
 
   const handleSaveCompetition = useCallback((name: string) => {
+    const validPlayers = players.filter(
+      p => p.scores.length === 18 && p.scores.every(s => s > 0)
+    );
+    const currentResults = calculateAllResults(players, config);
+    const winner = currentResults.find(r => r.rank === 1);
+    const summary: CompetitionSummary = {
+      playerCount: validPlayers.length,
+      winnerName: winner?.playerName ?? null,
+      winnerNet: winner?.net ?? null,
+    };
     const competition: SavedCompetition = {
       id: `comp-${Date.now()}`,
       name,
       date: new Date().toISOString(),
       config,
-      players
+      players,
+      summary
     };
     saveCompetition(competition);
     setHistory(loadHistory());
